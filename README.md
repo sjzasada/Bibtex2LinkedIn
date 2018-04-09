@@ -4,7 +4,7 @@ A Python 3 script to convert a Bibtex database to the [LinkedIn journal publicat
 
 ## Usage
 
-`pythion3 convert.py -f <bibtexfile> [-n <surname>] [-i <linkedin id>] [-t] [-j]`
+`python3 convert.py -f <bibtexfile> [-n <surname>] [-i <linkedin id>] [-t] [-j]`
 
 If `surname` is specified, occurrences of surname will be replaced by LinkedIn ID in the authors list.
 
