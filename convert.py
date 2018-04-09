@@ -112,13 +112,18 @@ def main():
         parser.customization = convert_to_unicode
         bib_database = bibtexparser.load(bibtex_file, parser=parser)
 
+        pubNo = 0
         pubs = []
         for i, entry in enumerate(bib_database.entries):
             print('Entry {}'.format(i));
-
+            pubNo = i
             pubs.append(parseBibentry(entry, name, id, titcase, jorcase))
 
-        print(json.dumps(pubs, indent=4, sort_keys=True))
+        if pubNo < 1:
+            print("No bibtex entries found")
+            sys.exit(5)
+        else:
+            print(json.dumps(pubs, indent=4, sort_keys=True))
 
     return;
 
