@@ -58,7 +58,7 @@ def parseBibentry(entry, myName, myId, titcase, jorcase):
             break
 
     pub['authors'] = people
-    return json.dumps(pub, indent=4, sort_keys=True);
+    return pub;
 
 def usage():
     print("usage: convert.py -f <bibtexfile> [-n <surname>] [-i <linkedin id>] [-t] [-j]\n")
@@ -112,10 +112,13 @@ def main():
         parser.customization = convert_to_unicode
         bib_database = bibtexparser.load(bibtex_file, parser=parser)
 
+        pubs = []
         for i, entry in enumerate(bib_database.entries):
             print('Entry {}'.format(i));
 
-            print(parseBibentry(entry, name, id, titcase, jorcase))
+            pubs.append(parseBibentry(entry, name, id, titcase, jorcase))
+
+        print(json.dumps(pubs, indent=4, sort_keys=True))
 
     return;
 
